@@ -4,19 +4,19 @@
 
 using namespace std;
 
-DelCheck::DelCheck(string file)
+inline DelCheck::DelCheck(string file)
 {
     filepath = file;
     this->gs = new GenStack<char>();
 }
 
-DelCheck::~DelCheck()
+inline DelCheck::~DelCheck()
 {
     filepath = "";
     delete this->gs;
 }
 
-void DelCheck::check()
+inline void DelCheck::check()
 {
     int line_num = 1;
     int leng = 0;

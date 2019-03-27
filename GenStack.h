@@ -29,7 +29,7 @@ class GenStack
 };
 
 template <typename T>
-GenStack<T>::GenStack()
+inline GenStack<T>::GenStack()
 {
     myArray = new T[128];
     size = 128;
@@ -37,7 +37,7 @@ GenStack<T>::GenStack()
 }
 
 template <typename T>
-GenStack<T>::GenStack(int maxSize)
+inline GenStack<T>::GenStack(int maxSize)
 {
     myArray = new T[maxSize];
     size = maxSize;
@@ -45,13 +45,13 @@ GenStack<T>::GenStack(int maxSize)
 }
 
 template <typename T>
-GenStack<T>::~GenStack()
+inline GenStack<T>::~GenStack()
 {
     delete []myArray;
 }
 
 template <typename T>
-void GenStack<T>::push(T x)
+inline void GenStack<T>::push(T x)
 {
     if(top < (size-1))
         myArray[++top] = x;
@@ -68,7 +68,7 @@ void GenStack<T>::push(T x)
 }
 
 template <typename T>
-T GenStack<T>::pop()
+inline T GenStack<T>::pop()
 {
     if (this->isEmpty())
         throw string("Stack is empty");
@@ -78,7 +78,7 @@ T GenStack<T>::pop()
 }
 
 template <typename T>
-T GenStack<T>::peak()
+inline T GenStack<T>::peak()
 {
     if (this->isEmpty())
         throw string("Stack is empty");
@@ -87,13 +87,13 @@ T GenStack<T>::peak()
 }
 
 template <typename T>
-bool GenStack<T>::isFull()
+inline bool GenStack<T>::isFull()
 {
     return(top == size-1);
 }
 
 template <typename T>
-bool GenStack<T>::isEmpty()
+inline bool GenStack<T>::isEmpty()
 {
     return(top == -1);
 }
