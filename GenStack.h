@@ -1,3 +1,6 @@
+#ifndef GEN_STACK_H
+#define GEN_STACK_H
+
 #include <iostream>
 
 using namespace std;
@@ -20,8 +23,9 @@ class GenStack
     private:
         int size;
         int top;
-
         T *myArray;
+
+
 };
 
 template <typename T>
@@ -54,11 +58,11 @@ void GenStack<T>::push(T x)
 
     else //create a new stack of greater size and adds to it
     {
-        GenStack revtemp = new GenStack(size);
-        revtemp.add(this.pop());//reveses the Stack
-        GenStack final = new GenStack (size + 10); //makes a stack 10 larger
-        final.add(revtemp.pop());//adds rev to final stack
-        myArray = final.myArray;
+        GenStack<T>* revtemp = new GenStack<T>(this->size);
+        revtemp->push(this->pop());//reveses the Stack
+        GenStack<T>* final = new GenStack<T>(this->size + 10); //makes a stack 10 larger
+        final->push(revtemp->pop());//adds rev to final stack
+        myArray = final->myArray;
     }
 
 }
@@ -66,7 +70,7 @@ void GenStack<T>::push(T x)
 template <typename T>
 T GenStack<T>::pop()
 {
-    if (this.isEmpty())
+    if (this->isEmpty())
         throw string("Stack is empty");
 
     return myArray[top--];
@@ -76,7 +80,7 @@ T GenStack<T>::pop()
 template <typename T>
 T GenStack<T>::peak()
 {
-    if (this.isEmpty())
+    if (this->isEmpty())
         throw string("Stack is empty");
 
     return myArray[top];
@@ -93,3 +97,5 @@ bool GenStack<T>::isEmpty()
 {
     return(top == -1);
 }
+
+#endif
